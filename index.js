@@ -1,14 +1,9 @@
-function rob(nums) {
-  if (nums.length === 1) return nums[0];
-  const robRange = (start, end) => {
-    let prevMax = 0;
-    let currMax = 0;
-    for (let i = start; i <= end; i++) {
-      const temp = currMax;
-      currMax = Math.max(currMax, prevMax + nums[i]);
-      prevMax = temp;
-    }
-    return currMax;
-  };
-  return Math.max(robRange(0, nums.length - 2), robRange(1, nums.length - 1));
+function canJump(nums) {
+  let maxJump = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (i > maxJump) return false;
+    maxJump = Math.max(maxJump, i + nums[i]);
+    if (maxJump >= nums.length - 1) return true;
+  }
+  return false;
 }
