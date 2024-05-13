@@ -1,17 +1,13 @@
-function combinationSum3(k, n) {
-  const result = [];
-  backtrack([], 1, k, n);
-  return result;
-  function backtrack(combination, start, k, n) {
-    if (n === 0 && k === 0) {
-      result.push([...combination]);
-      return;
+const bubbleSortOptimized = (arr) => {
+  let swapped;
+  do {
+    swapped = false;
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] > arr[i + 1]) {
+        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+        swapped = true;
+      }
     }
-    if (n < 0 || k === 0) return;
-    for (let i = start; i <= 9; i++) {
-      combination.push(i);
-      backtrack(combination, i + 1, k - 1, n - i);
-      combination.pop();
-    }
-  }
-}
+  } while (swapped);
+  return arr;
+};
