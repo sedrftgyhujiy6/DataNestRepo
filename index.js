@@ -1,13 +1,11 @@
-const bubbleSortOptimized = (arr) => {
-  let swapped;
-  do {
-    swapped = false;
-    for (let i = 0; i < arr.length - 1; i++) {
-      if (arr[i] > arr[i + 1]) {
-        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
-        swapped = true;
-      }
-    }
-  } while (swapped);
-  return arr;
-};
+function findMin(nums) {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left < right) {
+    const mid = Math.floor((left + right) / 2);
+    if (nums[mid] > nums[right]) left = mid + 1;
+    else if (nums[mid] < nums[right]) right = mid;
+    else right--;
+  }
+  return nums[left];
+}
